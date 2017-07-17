@@ -1,7 +1,11 @@
 #爬取安居客房价
 ####为将来自己找房子提供便利
 
-##程序架构
+
+###程序架构
+
+----------
+
 - class Spiders
    - getInfo()
        - get_firstpage_info()
@@ -16,7 +20,9 @@
         - titleFile()
         - getDistance()
 
-##程序说明
+###程序说明
+----------
+
 1. getInfo() 函数是爬取房价的核心函数
 
     1.  获取下一页楼盘的nextURL
@@ -30,8 +36,13 @@
 6. titleFile()方法实现为结果文件showInfo.csv添加列名
 7. getDistance()借助getDisTimeJson()方法实现了 所有楼盘距离目的地的通勤距离，时间，公交路线信息
 
-#TIPS
+###TIPS
+----------
 ###[http://lbsyun.baidu.com/index.php?title=webapi](http://lbsyun.baidu.com/index.php?title=webapi "百度地图api")
-#Forward
+
+###Forward
+
+----------
+
 ###准备拿到这些数据利用pandas进行简要分析，从单房价，总房价，区域位置，交通状况等信息综合挑选出合适的楼盘
 
