@@ -1,4 +1,3 @@
-==> standard input <==
 name,region,status,lvhua,rjl,price,one,two,three,four,five,startTime,finishTime,kaifashang,lng,lat,tranTime,tranDistancec,tranName
 润丰新尚,新郑市,在售,待定,待定,7600,0.0,84.33,119.0,107.0,0,待定,待定,郑州奥星实业有限公司,113.873070935,34.5696166148,8017,57325,"城郊线,地铁2号线,地铁1号线"
 锦艺金水湾,金水,在售,待定,待定,15800,0.0,0.0,105.15,142.31,0,待定,待定,河南锦家置业有限公司,113.698022915,34.8391685714,5219,28858,"地铁2号线,地铁1号线"
