@@ -13,9 +13,9 @@ import urllib
 from pandas import Series, DataFrame
 import pandas as pd
 
+
 reload(sys)
 sys.setdefaultencoding('utf8')
-
 
 source_url='http://zz.fang.anjuke.com/loupan/all/'
 headers={
@@ -302,14 +302,64 @@ class Spiders(object):
                         distanceDit['tranName'] += tmp['result']['routes'][0]['steps'][i][0]['vehicle_info']['detail']['name']+','
         return distanceDit
 
-if __name__ == '__main__':
-    spider = Spiders()
-    #写数据
-    spider.getInfo()
-    #写列名
-    spider.titleFile()
-    #房价热力力图 ok
-    #起码要用百度地图得出每个楼盘到目的地的最快公交，时间，路程ok
-    spider.getDistance()
-    
 
+
+    #这个地方来测试python 编码格式的问题：明天仔细研究7-19
+    #coding:utf8 和 reload(sys),sys.sedfeautencoding('utf8') 是否有区别以及作用
+    #注意网页的编码格式
+    #今天的东西可以总结
+    def get(self):
+        url = 'http://www.stats.gov.cn/tjsj/zxfb/index.html'
+        #https://zz.fang.anjuke.com/loupan/all/w1/
+        response = self.s.get(url.strip(), headers=headers)
+        print response.encoding
+        response.encoding = 'utf8' 
+        print response.encoding
+        
+        soup = BeautifulSoup(response.text, 'lxml')
+        with open('test','w') as f:
+            f.write(soup.prettify())
+        #first step
+        # response.encoding = 'utf8' 
+        # print u"中文",response.text # 控制台显示正常，写入文本也正常
+        # print u'中文',response.content #控制台显示乱码
+        # print u'中文', response.content.decode('utf8') # 控制台显示正常
+
+        # print '11',response.text
+        # print response.headers['content-type']
+        # print response.encoding
+        # header = response.headers
+        # print response.apparent_encoding
+        # print requests.utils.get_encodings_from_content(response.content)
+        # print type(response.text.decode())
+
+        #second step sys.reload()
+        #1. 直接写入response.text, 输出文件中文乱码
+        #2. 直接写入response.content, 输出文件正常
+
+        #third 注释了下面的---error
+        # reload(sys)
+        # sys.setdefaultencoding('utf8')
+
+
+        # print response.content.decode(response.encoding)
+        # print response.encoding
+        # response.encoding = 'utf8' 
+        # soup = BeautifulSoup(response.text, 'lxml')
+        # print type(response.text)
+        # with open('test','w') as f:
+        #     f.write(soup.prettify())
+
+if __name__ == '__main__':
+
+
+    spider = Spiders()
+    # #写数据
+    # spider.getInfo()
+    # #写列名
+    # spider.titleFile()
+    # #房价热力力图 ok
+    # #起码要用百度地图得出每个楼盘到目的地的最快公交，时间，路程ok
+    # spider.getDistance()
+    
+    spider.get()
